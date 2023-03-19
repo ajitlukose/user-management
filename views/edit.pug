@@ -1,0 +1,36 @@
+include _header.pug
+    h5 Edit User
+    form(class="form-horizontal",action=`/edit/${model[0].id}`, method='POST')
+      label(class="form-group row",class="col-form-label col-sm-2",for='first_name') First Name
+        span.required * 
+      input#fname(class="col-sm-5",class="form-control",autofocus=true,type='text', name='first_name', value=model[0].first_name,required)
+      br
+      label(class="form-group row",class="col-form-label col-sm-2",for='last_name') Last Name
+        span.required *
+      input#lname(class="col-sm-5",class="form-control",type='text', name='last_name', value=model[0].last_name,required)
+      br
+      label( class="form-group row",class="col-form-label col-sm-2",for='role') Role
+        span.required *
+      ul
+      select(class="col-sm-5",class="form-control",autofocus=true,name='role')    
+          each val in ['manager', 'admin', 'employee']
+            if(model[0].role==val)
+                option(value=val selected) #{val} 
+            else
+                option(value=val) #{val} 
+     
+      label(class="form-group row",class="col-form-label col-sm-2",for='email') Email
+        span.required *
+      input#email(class="col-sm-5",class="form-control",type='text', name='email', value=model[0].email,required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email address")
+      br
+      label( class="form-group row",class="col-form-label col-sm-2",for='contactNumber') Contact Number
+        span.required *
+      input#contactNumber(class="col-sm-5",class="form-control",autofocus=true,type='text',name='c_number', value=model[0].c_number,required pattern="[0-9]{10}" title="Please enter a valid 10-digit mobile number")
+      br
+      label(class="form-group row",class="col-form-label col-sm-2",for='created_at') Created
+      input#created_at(readonly ,class="col-sm-5",class="form-control",type='text', name='created_at', value=model[0].created_at)
+      br
+      button(type='submit',class="btn-success savebtn") Save
+      a(href='/' class="btn btn-danger cancelbtn ") Cancel
+
+    include footer.pug

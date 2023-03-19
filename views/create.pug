@@ -1,0 +1,35 @@
+
+include _header.pug
+    h5 Create User
+    form(class="form-horizontal",action=`/create`, method='POST')
+      label( class="form-group row",class="col-form-label col-sm-2",for='first_name') First Name
+        span.required *
+      input#first_name(class="col-sm-5",class="form-control",autofocus=true,type='text', name='first_name', value="",required)
+      br
+      label(class="form-group row",class="col-form-label col-sm-2",for='lname') Last Name
+        span.required *
+      input#lname(class="col-sm-5",class="form-control",type='text', name='last_name', value="")
+      br
+      label( class="form-group row",class="col-form-label col-sm-2",for='role') Role
+        span.required *
+      ul
+      select(class="col-sm-5",class="form-control",name='role')    
+          each val in ['manager', 'admin', 'employee']
+            option(value=val)   #{val}  
+      br
+      label(class="form-group row",class="col-form-label col-sm-2",for='email') Email
+        span.required *
+      input#email(class="col-sm-5",class="form-control",type='text', name='email', value="",required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email address")
+      br
+      label( class="form-group row",class="col-form-label col-sm-2",for='contactNumber') Contact Number
+        span.required *
+      input#contactNumber(class="col-sm-5",class="form-control",autofocus=true,type='text', name='c_number', value="",required pattern="[0-9]{10}" title="Please enter a valid 10-digit mobile number")
+      br
+      
+      button(type='submit',class="btn-success savebtn") Save
+
+      a(href='/' class="btn btn-danger cancelbtn") Cancel
+
+    include footer.pug
+
+
