@@ -98,7 +98,7 @@ router.get('/', async (ctx) => {
           resolve(rows);
         });
       });
-    //ctx.redirect('/');
+    ctx.redirect('/');
   });
 
 
